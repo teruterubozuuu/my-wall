@@ -7,11 +7,12 @@ import Messages from './Messages'
 import MessageInput from './MessageInput';
 import { Typography } from './ui/typography/typography';
 import SpotifyEmbed from './SpotifyEmbed';
+import { PostsProps } from '@/utils/types/posts';
 
-export default function Wall() {
+export default function Wall({posts}: PostsProps) {
     return (
         <>
-            <div className='flex justify-center '>
+            <div className='flex justify-center'>
                 <div className='p-5'>
                     <Card className='mb-3'>
                         <CardContent>
@@ -22,7 +23,7 @@ export default function Wall() {
                         <div className='max-w-180 flex-2 flex flex-col gap-3'>
                             <Card>
                                 <CardContent>
-                                    <Image width={500} height={500} src="/pfp2.jpg" alt='My Photo' className='w-full' />
+                                    <Image loading="eager" width={500} height={500} src="/pfp2.jpg" alt='My Photo' className='w-full' />
                                 </CardContent>
                                 <CardFooter className='flex flex-col items-center'>
                                     <span className='uppercase text-xl'>Joylynne Esportuno</span>
@@ -32,15 +33,15 @@ export default function Wall() {
                             </Card>
                             <SpotifyEmbed />
                         </div>
-                        <div className='flex flex-5 flex-col gap-3'>
-                            <section className='flex flex-col'>
+                        <div className='flex flex-5 flex-col md:gap-3 gap-5'>
+                            <section className='flex flex-col mt-5'>
                                 <Typography variant="LEAD" className='uppercase text-lg text-green'>Tell me something</Typography>
                                 <MessageInput />
                             </section>
 
                             <section>
                                 <Typography variant="LEAD" className='uppercase text-lg text-green'>Messages</Typography>
-                                <Messages />
+                                <Messages posts={posts}/>
                             </section>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ToastPrimitive from '@radix-ui/react-toast'
 import { cn } from '@/lib/utils'
-import type { ToastVariant } from './use-toast'
+import type { ToastVariant } from '../../../hooks/use-toast'
 
 const ToastProvider  = ToastPrimitive.Provider
 const ToastViewport  = React.forwardRef<
@@ -93,7 +93,7 @@ const ToastTitle = React.forwardRef<
     ref={ref}
     className={cn(className)}
     style={{
-      fontSize:      '0.75rem',
+      fontSize:      '0.9rem',
       fontWeight:    600,
       color:         'var(--text-secondary)',
       letterSpacing: '0.06em',
@@ -113,7 +113,7 @@ const ToastDescription = React.forwardRef<
     ref={ref}
     className={cn(className)}
     style={{
-      fontSize:   '0.75rem',
+      fontSize:   '0.9rem',
       color:      'var(--text-muted)',
       lineHeight: 1.5,
       marginTop:  '0.2rem',
