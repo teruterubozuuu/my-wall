@@ -8,8 +8,9 @@ import MessageInput from './MessageInput';
 import { Typography } from './ui/typography/typography';
 import SpotifyEmbed from './SpotifyEmbed';
 import { PostsProps } from '@/utils/types/posts';
+import { Separator } from './ui/separator/separator';
 
-export default function Wall({posts}: PostsProps) {
+export default function Wall({ posts }: PostsProps) {
     return (
         <>
             <div className='flex justify-center'>
@@ -34,14 +35,16 @@ export default function Wall({posts}: PostsProps) {
                             <SpotifyEmbed />
                         </div>
                         <div className='flex flex-5 flex-col md:gap-3 gap-5'>
-                            <section className='flex flex-col mt-5'>
-                                <Typography variant="LEAD" className='uppercase text-lg text-green'>Tell me something</Typography>
+                            <Separator className='md:mt-0 mt-5'/>
+                            <Separator label="TELL ME SOMETHING" />
+                            <section className='flex flex-col mb-5 md:mt-0'>
                                 <MessageInput />
                             </section>
 
+                                <Separator />
+                                <Separator label="MESSAGES" />
                             <section>
-                                <Typography variant="LEAD" className='uppercase text-lg text-green'>Messages</Typography>
-                                <Messages posts={posts}/>
+                                <Messages posts={posts} />
                             </section>
                         </div>
                     </div>
