@@ -54,7 +54,7 @@ export default function Messages({ posts: initialPosts }: PostsProps) {
   }, []);
 
   return (
-    <div className='flex flex-col gap-3'>
+    <div className='flex h-full min-h-0 flex-col gap-3 overflow-y-auto md:overscroll-contain pr-1'>
       {posts.map((post) => {
         const date = new Date(post.created_at);
         const formatted = new Intl.DateTimeFormat("en-US", {
@@ -63,7 +63,7 @@ export default function Messages({ posts: initialPosts }: PostsProps) {
         }).format(date);
 
         return (
-          <Panel notch='md' key={post.id}>
+          <Panel notch='md' key={post.id} className='shrink-0'>
             <PanelHeader>
               <PanelTitle>{post.username}</PanelTitle>
             </PanelHeader>

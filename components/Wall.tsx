@@ -13,14 +13,14 @@ import { Separator } from './ui/separator/separator';
 export default function Wall({ posts }: PostsProps) {
     return (
         <>
-            <div className='flex justify-center'>
-                <div className='p-5'>
-                    <Card className='mb-3'>
+            <div className='flex justify-center md:h-dvh md:overflow-hidden'>
+                <div className='flex min-h-0 flex-col p-5'>
+                    <Card className='mb-3 shrink-0'>
                         <CardContent>
                             <p className='text-xl text-green text-center'> ✩°｡ Joy's Wall ⋆⸜ 🎧✮</p>
                         </CardContent>
                     </Card>
-                    <div className='flex md:flex-row flex-col gap-3'>
+                    <div className='flex min-h-0 flex-1 flex-col md:gap-3 md:flex-row'>
                         <div className='max-w-180 flex-2 flex flex-col gap-3'>
                             <Card>
                                 <CardContent>
@@ -34,16 +34,16 @@ export default function Wall({ posts }: PostsProps) {
                             </Card>
                             <SpotifyEmbed />
                         </div>
-                        <div className='flex flex-5 flex-col md:gap-3 gap-5'>
-                            <Separator className='md:mt-0 mt-5'/>
+                        <div className='flex gap-5 min-h-0 md:flex-5 flex-col md:overflow-hidden md:h-full md:gap-3'>
+                            <Separator/>
                             <Separator label="TELL ME SOMETHING" />
-                            <section className='flex flex-col mb-5 md:mt-0'>
+                            <section className='mb-5 flex shrink-0 flex-col md:mt-0'>
                                 <MessageInput />
                             </section>
 
                                 <Separator />
                                 <Separator label="MESSAGES" />
-                            <section>
+                            <section className='md:overflow-hidden'>
                                 <Messages posts={posts} />
                             </section>
                         </div>
