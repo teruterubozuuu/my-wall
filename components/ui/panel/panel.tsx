@@ -61,7 +61,7 @@ const PanelTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTM
       ref={ref}
       className={cn(className)}
       style={{
-        fontSize:      '0.7rem',
+        fontSize:      '0.9rem',
         fontWeight:    600,
         color:         'var(--text-muted)',
         letterSpacing: '0.12em',

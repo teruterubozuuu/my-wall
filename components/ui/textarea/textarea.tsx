@@ -16,7 +16,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           <label
             htmlFor={textareaId}
             style={{
-              fontSize:      '0.65rem',
+              fontSize:      '0.9rem',
               color:         error ? 'var(--color-amber)' : 'var(--text-muted)',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
