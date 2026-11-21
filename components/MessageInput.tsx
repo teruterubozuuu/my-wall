@@ -26,6 +26,7 @@ export default function MessageInput() {
     const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
     const [filePreview, setFilePreview] = useState<string | undefined>(undefined);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const { toast, toasts, dismiss } = useToast();
 
     const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes
@@ -53,7 +54,9 @@ export default function MessageInput() {
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
+
         if (!file) {
+            setSelectedFile(null);
             setSelectedFileName(null);
             setFilePreview(undefined);
             return;
@@ -66,12 +69,15 @@ export default function MessageInput() {
                 variant: "CRITICAL",
                 duration: 6000,
             });
+
             e.target.value = "";
+            setSelectedFile(null);
             setSelectedFileName(null);
             setFilePreview(undefined);
             return;
         }
 
+        setSelectedFile(file);
         setFilePreview(URL.createObjectURL(file));
         setSelectedFileName(file.name);
     };
@@ -88,10 +94,10 @@ export default function MessageInput() {
 
         if (messageError !== "") return;
 
-        if (messageCount < 5) {
+        if (message.trim().length < 5 && (!image || image.size === 0)) {
             return toast({
                 title: "FAILED TO SHARE MESSAGE",
-                description: "Message must be at least 5 characters",
+                description: "Please enter at least 5 characters or upload an image.",
                 variant: "CRITICAL",
                 duration: 6000
             });
@@ -145,7 +151,7 @@ export default function MessageInput() {
             setUsernameCount(0);
             setSelectedFileName(null);
             setFilePreview(undefined);
-
+            setSelectedFile(null);
             toast({
                 title: "SUCCESS",
                 description: "MESSAGE HAS BEEN SHARED",
@@ -164,6 +170,16 @@ export default function MessageInput() {
             setIsSubmitting(false);
         }
     };
+
+    const hasMessage = messageCount > 0;
+    const hasImage = selectedFile !== null;
+
+    const isDisabled =
+        isSubmitting ||
+        messageError !== "" ||
+        usernameError !== "" ||
+        usernameCount < 3 ||
+        (!hasMessage && !hasImage);
 
     return (
         <>
@@ -203,32 +219,28 @@ export default function MessageInput() {
                                 <span>{selectedFileName ? "Replace" : "Upload Image"}</span>
                             </div>
                             {selectedFileName && filePreview && (
-                            <button 
-                                className='text-amber hover:text-white/50 transition-colors cursor-pointer'
-                                onClick={()=> {
-                                    setFilePreview(undefined);
-                                    setSelectedFileName(null);
-                                }}
-                            >
-                                Remove
-                            </button>
-                            ) }
+                                <button
+                                    className='text-amber hover:text-white/50 transition-colors cursor-pointer'
+                                    onClick={() => {
+                                        setSelectedFile(null);
+                                        setFilePreview(undefined);
+                                        setSelectedFileName(null);
+                                    }}
+                                >
+                                    Remove
+                                </button>
+                            )}
                         </div>
                     </label>
                     <Button
                         variant="EXEC"
                         className='w-fit'
                         type='submit'
-                        disabled={
-                            isSubmitting ||
-                            messageError !== "" ||
-                            usernameError !== "" ||
-                            !usernameCount ||
-                            !messageCount
-                        }
+                        disabled={isDisabled}
                     >
                         {isSubmitting ? "Sharing..." : "Share"}
                     </Button>
+
                 </div>
             </form>
 
