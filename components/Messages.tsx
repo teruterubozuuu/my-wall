@@ -54,7 +54,7 @@ export default function Messages({ posts: initialPosts }: PostsProps) {
   }, []);
 
   return (
-    <div className='flex h-full min-h-0 flex-col gap-3 overflow-y-auto md:overscroll-contain pr-1'>
+    <div className='flex min-h-0 flex-col gap-3'>
       {posts.map((post) => {
         const date = new Date(post.created_at);
         const formatted = new Intl.DateTimeFormat("en-US", {
@@ -68,10 +68,10 @@ export default function Messages({ posts: initialPosts }: PostsProps) {
               <PanelTitle>{post.username}</PanelTitle>
             </PanelHeader>
             <PanelContent>
-              <p>{post.message}</p>
+              <p className='font-pixel'>{post.message}</p>
               {post.image_url && (
                 <div className='flex justify-center my-3'>
-                  <img loading="eager" width={500} height={500} src={post.image_url} alt="Image" className='w-100' />
+                  <img loading="eager" width={500} height={500} src={post.image_url} alt="Image" className='w-150 h-auto' />
 
                 </div>
               )}
