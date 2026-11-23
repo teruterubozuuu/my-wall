@@ -43,13 +43,13 @@ export default function Projects() {
        {projects.map((project)=>(
         <Panel key={project.id}>
             <PanelHeader>
-                <PanelTitle>{project.id}</PanelTitle>
+                <PanelTitle className='text-bone/80!'>{project.id}</PanelTitle>
             </PanelHeader>
             <PanelContent className='flex md:flex-row flex-col gap-3'>
                 <Image width={500} height={500} src={project.image} alt="Project Image"/>
                 <div>
                     <p className='font-bold uppercase text-xl font-pixel text-green'>{project.label}</p>
-                    <p className='font-pixel'>{project.description}</p>
+                    <p className='font-pixel text-bone/80'>{project.description}</p>
                     {project.id !== "visual-canvas" &&<a href={project.link} className='opacity-80 hover:underline! hover:opacity-100 transition-colors' target='_blank' rel="noopen noreferrer">View Project</a>}
                 </div>
             </PanelContent>

@@ -10,14 +10,14 @@ export default function Wall({ posts }: PostsProps) {
             <Separator />
             <Separator label="TELL ME SOMETHING" />
 
-            <section className="mb-5 shrink-0">
+            <section className="my-5 shrink-0">
                 <MessageInput />
             </section>
 
             <Separator />
             <Separator label="MESSAGES" />
 
-            <section className="pb-3">
+            <section className="my-5 pb-3">
                 <Messages posts={posts} />
             </section>
         </div>

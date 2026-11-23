@@ -65,7 +65,7 @@ export default function Messages({ posts: initialPosts }: PostsProps) {
         return (
           <Panel notch='md' key={post.id} className='shrink-0'>
             <PanelHeader>
-              <PanelTitle>{post.username}</PanelTitle>
+              <PanelTitle className='text-bone/80!'>{post.username}</PanelTitle>
             </PanelHeader>
             <PanelContent>
               <p className='font-pixel'>{post.message}</p>
