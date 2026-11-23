@@ -11,7 +11,7 @@ export default function Skills() {
   return (
     <div className='flex md:justify-start justify-center flex-wrap gap-3'>
         {skills.map((skill)=>(
-            <Badge key={skill.id} className='font-pixel text-md text-retro-secondary border-retro-secondary'>{skill.label}</Badge>
+            <Badge key={skill.id} className='font-pixel text-md' variant="SCANNING">{skill.label}</Badge>
         ))}
     </div>
   )

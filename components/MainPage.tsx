@@ -1,14 +1,8 @@
 "use client";
 import { Card, CardContent, CardFooter } from './ui/card/card'
 import Image from 'next/image'
-import { Textarea } from './ui/textarea/textarea'
-import { Button } from './ui/button/button'
-import Messages from './Messages'
-import MessageInput from './MessageInput';
-import { Typography } from './ui/typography/typography';
 import SpotifyEmbed from './SpotifyEmbed';
 import { PostsProps } from '@/utils/types/posts';
-import { Separator } from './ui/separator/separator';
 import Wall from './Wall';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs/tabs';
 import Portfolio from './Portfolio';
@@ -35,7 +29,7 @@ export default function MainPage({ posts }: PostsProps) {
                     <Tabs defaultValue='portfolio' className='mx-auto w-full max-w-180 min-w-0 md:mx-0 md:w-auto md:max-w-none md:flex-5'>
                         <TabsList>
                             <TabsTrigger value="portfolio">
-                                Portfolio
+                                Dev Portfolio
                             </TabsTrigger>
                             <TabsTrigger value="wall">
                                 Joy's Wall
