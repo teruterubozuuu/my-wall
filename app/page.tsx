@@ -19,5 +19,7 @@ export default async function Main() {
     return;
   }
 
-  return <MainPage posts={posts} />
+  return(
+     <MainPage posts={posts} />
+  )
 }
